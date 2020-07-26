@@ -33,6 +33,7 @@ Launch the VM by executing:
 ## Generate the Traces
 When you get the shell prompt, just execute:
 
+	cd /sys/kernel/debug/tracing
 	insmod /virtio_balloon.ko
 	less trace
 
