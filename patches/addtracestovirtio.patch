@@ -1,0 +1,35 @@
+diff --git a/drivers/virtio/virtio.c b/drivers/virtio/virtio.c
+index a977e32a8..f9c984ed9 100644
+--- a/drivers/virtio/virtio.c
++++ b/drivers/virtio/virtio.c
+@@ -201,7 +201,7 @@ static int virtio_dev_probe(struct device *_d)
+ 
+ 	/* We have a driver! */
+ 	virtio_add_status(dev, VIRTIO_CONFIG_S_DRIVER);
+-
++        trace_printk("Driver\n");
+ 	/* Figure out what features the device supports. */
+ 	device_features = dev->config->get_features(dev);
+ 
+@@ -244,7 +244,7 @@ static int virtio_dev_probe(struct device *_d)
+ 	err = virtio_finalize_features(dev);
+ 	if (err)
+ 		goto err;
+-
++        trace_printk ("FeaturesOK\n");
+ 	err = drv->probe(dev);
+ 	if (err)
+ 		goto err;
+diff --git a/include/linux/virtio_config.h b/include/linux/virtio_config.h
+index bb4cc4910..fc7dda1d2 100644
+--- a/include/linux/virtio_config.h
++++ b/include/linux/virtio_config.h
+@@ -219,7 +219,7 @@ static inline
+ void virtio_device_ready(struct virtio_device *dev)
+ {
+ 	unsigned status = dev->config->get_status(dev);
+-
++        trace_printk("DriverOK\n");
+ 	BUG_ON(status & VIRTIO_CONFIG_S_DRIVER_OK);
+ 	dev->config->set_status(dev, status | VIRTIO_CONFIG_S_DRIVER_OK);
+ }

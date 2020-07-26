@@ -1,0 +1,52 @@
+ClockConstraintSystem VirtIOStatusRegisterForValidation{
+	imports {
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+	}
+	
+	entryBlock main
+	
+	Block main{
+		Clock BaseTicks;
+		
+        // This must be generated from the trace
+        // Seq 1: correct trace
+        //
+        //Sequence seqFromTraceA:IntegerSequence = (1);
+        //Sequence seqFromTraceB:IntegerSequence = (2);
+        //Sequence seqFromTraceC:IntegerSequence = (4);
+        
+        // Sequence 2: Incorrect trace
+        Sequence seqFromTraceA:IntegerSequence = (1);
+        Sequence seqFromTraceB:IntegerSequence = (4);
+        Sequence seqFromTraceC:IntegerSequence = (2);
+         
+        // Sequence 3: Incorrect trace
+        // Sequence seqFromTraceA:IntegerSequence = (4);
+        // Sequence seqFromTraceB:IntegerSequence = (2);
+        // Sequence seqFromTraceC:IntegerSequence = (1);
+         
+        // Sequence 4: Incorrect trace
+        // Sequence seqFromTraceA:IntegerSequence = (4);
+        // Sequence seqFromTraceB:IntegerSequence = (1);
+        // Sequence seqFromTraceC:IntegerSequence = (2);
+         
+        // Sequence 5: Incorrect trace
+        // Sequence seqFromTraceA:IntegerSequence = (2);
+        // Sequence seqFromTraceB:IntegerSequence = (1);
+        // Sequence seqFromTraceC:IntegerSequence = (4);
+         
+        // Sequence 6: Incorrect trace
+        // Sequence seqFromTraceA:IntegerSequence = (2);
+        // Sequence seqFromTraceB:IntegerSequence = (4);
+        // Sequence seqFromTraceC:IntegerSequence = (1);
+
+        Expression Driver=FilterBy( FilterByClock -> BaseTicks ,FilterBySeq -> seqFromTraceA)
+        Expression FeaturesOK=FilterBy( FilterByClock -> BaseTicks ,FilterBySeq -> seqFromTraceB)    
+        Expression DriverOK=FilterBy( FilterByClock -> BaseTicks ,FilterBySeq -> seqFromTraceC)
+        
+        assert Relation AckPrecedesFeatureOK[Precedes](   LeftClock -> Driver ,	RightClock -> FeaturesOK )
+        assert Relation FeatureOKPrecedes[Precedes](   LeftClock -> FeaturesOK ,	RightClock -> DriverOK )        
+	}
+}
+
