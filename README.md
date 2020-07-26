@@ -47,15 +47,15 @@ Select these traces and paste them into a textual editor to use latter. You can 
 ## Analyze the traces
 We use an Eclipse workbench that contains TimeSquare to validate the generated traces but also to analyze the CCSL specification of the VirtIO specification. Please follow the steps at http://timesquare.inria.fr/download/ to get an Eclipse with TimeSquare installed. 
 
-The first step is to import the project `plugins/org.virtio.virtiodriver.ccslmodel` into the workbench. At left, you can see that the project contains two CCSL specifications. At right, you can see the textual editor of the CCSL specification. This is shown in the following figure. 
+The first step is to import the project `plugins/org.virtio.virtiodriver.ccslmodel` into the workbench. At left, you can see that the project contains two CCSL specifications. At right, you can see the textual editor of the CCSL specification. This is shown in the following figure: 
 
 ![workbench](./images/workbench.png)
 
-To validate the generated traces, we have to describe traces in a format that CCSL understands. For the moment, this is manually done. For example, the traces generated above are translated to the following code: 
+To validate the generated traces, we have to describe the traces in a format that CCSL understands them. For the moment, this is manually done. For example, the traces generated before are translated into the following code: 
 
-	Sequence seqFromTraceA:IntegerSequence = (1);
-	Sequence seqFromTraceB:IntegerSequence = (2);
-	Sequence seqFromTraceC:IntegerSequence = (4);
+        Sequence seqForDriver:IntegerSequence = (1);
+        Sequence seqForFeaturesOK:IntegerSequence = (2);
+        Sequence seqForDriverOK:IntegerSequence = (4);
 
 The following picture shows how this is included into the CCSL specification. This corresponds with the sequence declared from line 15 to 17.
 
@@ -69,7 +69,7 @@ To generate the state-space diagram, right-click on `VirtIOStatusRegisterForStat
 
 ![assert](./images/generate-state-space.png)
 
-This generates the file `VirtIOStatusRegisterForStateSpace.dot`that contains the state-space diagram is DOT format. You can use any DOT viewer to display the diagram. For example, you can use https://dreampuf.github.io/GraphvizOnline/ and get something like:
+This generates the file `VirtIOStatusRegisterForStateSpace.dot`that contains the state-space diagram in DOT format. You can use any DOT viewer to display the diagram. For example, you can use https://dreampuf.github.io/GraphvizOnline/ and get something like:
 
 
 ![assert](./images/state-space.png)
