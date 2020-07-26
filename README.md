@@ -74,3 +74,5 @@ This generates the file `VirtIOStatusRegisterForStateSpace.dot`that contains the
 
 
 ![assert](./images/state-space.png)
+
+You can find that shows these steps [here](https://youtu.be/TSvmjEfdQaw).
