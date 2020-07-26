@@ -12,14 +12,14 @@ ClockConstraintSystem VirtIOStatusRegisterForValidation{
         // This must be generated from the trace
         // Seq 1: correct trace
         //
-        //Sequence seqForDriver:IntegerSequence = (1);
-        //Sequence seqForFeaturesOK:IntegerSequence = (2);
-        //Sequence seqForDriverOK:IntegerSequence = (4);
+        Sequence seqForDriver:IntegerSequence = (1);
+        Sequence seqForFeaturesOK:IntegerSequence = (2);
+        Sequence seqForDriverOK:IntegerSequence = (4);
         
         // Sequence 2: Incorrect trace
-         Sequence seqForDriver:IntegerSequence = (1);
-         Sequence seqForFeaturesOK:IntegerSequence = (4);
-         Sequence seqForDriverOK:IntegerSequence = (2);
+        // Sequence seqForDriver:IntegerSequence = (1);
+        // Sequence seqForFeaturesOK:IntegerSequence = (4);
+        // Sequence seqForDriverOK:IntegerSequence = (2);
          
         // Sequence 3: Incorrect trace
         // Sequence seqForDriver:IntegerSequence = (4);
