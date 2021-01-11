@@ -96,7 +96,7 @@ This is a simple XText grammar to ease the importing of traces from ftrace. Laun
 
 When a `.ftrace` is created or modified, this results in the generation of a `.extendedCCSL` file in the `src-gen`. This is the correct format to include a trace in a CCSL file. The file `VirtIOStatusRegisterForValidation.extendedCCSL` contains the translation of the VirtIO requirements by using CCSL.  This file also includes the trace that we want to validate. For example, in the next figure, we import the trace named `trace1.ftrace.extendedCCSL`, which is generated from `trace1.ftrace`.
 
-![workbench](./images/workbench.png)
+![workbench1](./images/workbench.png)
 
 To validate this sequence, right click on the CCSL specification named `VirtIOStatusRegisterForValidation.extendedCCSL`and then`Run As > CCSL Simulation`. The simulation is re-played by executing three steps of simulation. This corresponds with the steps in the trace. The console outputs the simulation of the specification and assert any violation if any. This triggers asserts when violations are found:
 
