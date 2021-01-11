@@ -1,0 +1,3 @@
+insmod-218   [000] ....    85.178379: virtio_dev_probe: Driver
+insmod-218   [000] ....    85.180762: virtio_dev_probe: DriverOK
+insmod-218   [000] ....    85.185428: virtio_dev_probe: FeaturesOK

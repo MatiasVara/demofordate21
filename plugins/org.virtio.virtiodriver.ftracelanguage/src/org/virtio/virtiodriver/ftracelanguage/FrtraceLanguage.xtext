@@ -1,0 +1,15 @@
+grammar org.virtio.virtiodriver.ftracelanguage.FrtraceLanguage with org.eclipse.xtext.common.Terminals
+
+generate frtraceLanguage "http://www.virtio.org/virtiodriver/ftracelanguage/FrtraceLanguage"
+
+// The grammar accepts the following parsing:
+// insmod-218   [000] ....    85.178379: virtio_dev_probe: Driver
+// insmod-218   [000] ....    85.180762: virtio_dev_probe: FeaturesOK
+// insmod-218   [000] ....    85.185428: virtio_dev_probe: DriverOK
+	
+TraceModel:
+	Traces+=Trace*;
+	
+Trace:
+	 first=ID '-' second=INT '[000]' '....' timestamp=INT'.'dec=INT':' function=ID':' name=ID;
+	
